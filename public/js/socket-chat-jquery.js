@@ -7,7 +7,8 @@ var params = new URLSearchParams(window.location.search);
 let divUsuarios = $('#divUsuarios');
 
 function renderizarUsuarios(personas) {
-
+    let audio = new Audio('audio/new-ticket.mp3');
+    audio.play();
 
     let html = '';
     html += '<li>';
