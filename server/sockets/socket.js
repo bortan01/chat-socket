@@ -33,10 +33,12 @@ io.on('connection', (client) => {
         client.broadcast.to(personaBorrada.sala).emit('listaPersonas', usuarios.getPersonasPorSala(personaBorrada.sala));
     });
 
-    client.on('crearMesaje', (data) => {
+    client.on('crearMensaje', (data, respuesta) => {
         let persona = usuarios.getPersona(client.id);
         let mensaje = crearMensaje(persona.nombre, data.mensaje);
         client.broadcast.to(persona.sala).emit('crearMesaje', mensaje);
+
+        respuesta(mensaje);
     });
     ////mensajes privadodos
     client.on('mensajePrivado', (data) => {
