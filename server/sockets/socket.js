@@ -22,6 +22,7 @@ io.on('connection', (client) => {
 
 
         client.broadcast.to(data.sala).emit('listaPersonas', usuarios.getPersonasPorSala(data.sala));
+        client.broadcast.to(data.sala).emit("crearMesaje", crearMensaje('Administrador', `${data.nombre} entro`));
 
         respuesta(usuarios.getPersonasPorSala(data.sala));
 
@@ -37,8 +38,8 @@ io.on('connection', (client) => {
         let persona = usuarios.getPersona(client.id);
         let mensaje = crearMensaje(persona.nombre, data.mensaje);
         client.broadcast.to(persona.sala).emit('crearMesaje', mensaje);
-
         respuesta(mensaje);
+
     });
     ////mensajes privadodos
     client.on('mensajePrivado', (data) => {

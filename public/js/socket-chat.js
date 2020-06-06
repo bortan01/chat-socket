@@ -31,14 +31,17 @@ socket.on('disconnect', function() {
 // Escuchar información
 socket.on('crearMesaje', function(mensaje) {
 
-    console.log('desde socket-chat: ', mensaje);
+    // console.log('desde socket-chat: ', mensaje);
+    renderizarMensajes(mensaje, false);
+    scrollBottom();
+
 
 });
 
 //escuchar cuando un usuario entra o sale del chat 
 socket.on('listaPersonas', function(usuarios) {
-    renderizarUsuarios(usuarios);
-    console.log('Servidor: ', usuarios);
+    //renderizarUsuarios(usuarios);
+    // console.log('Servidor: ', usuarios);
 
 });
 
