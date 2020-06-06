@@ -22,6 +22,15 @@ function renderizarUsuarios(personas) {
 
     }
     divUsuarios.html(html);
+    ///listeners de jquery
 
+    divUsuarios.on('click', 'a', function() {
+        var id = $(this).data('id');
+        if (id) {
+            console.log(id);
+        }
+
+
+    });
 
 }
